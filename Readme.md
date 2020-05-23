@@ -17,3 +17,5 @@
 	将uni.ttf拷贝到static目录下即可解决
 	1.3、解决iconfont.css中.iconfont报错
 	font-family: "iconfont"  , sans-serif  !important;
+4、在pages.json中配置tabBar
+5、常用样式封装：1、颜色、背景颜色、边框颜色、文本颜色，2、布局，3、边框，4、内边距，5、外边距，6字体大小，7行高，8、flex布局
