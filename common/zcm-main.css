@@ -263,6 +263,7 @@ body{
 .mr-4 { margin-right: 40upx;}
 .mr-5 { margin-right: 50upx;}
 
+/* 内边距 */
 .p-0 {padding-left: 0;padding-right: 0;padding-top: 0;padding-bottom: 0;}
 .p {padding-left: 5upx;padding-right: 5upx;padding-top: 5upx;padding-bottom:5upx;}
 .p-1 {padding-left: 10upx;padding-right: 10upx;padding-top: 10upx;padding-bottom: 10upx;}
@@ -271,6 +272,7 @@ body{
 .p-4 {padding-left: 40upx;padding-right: 40upx;padding-top: 40upx;padding-bottom: 40upx;}
 .p-5 {padding-left: 50upx;padding-right: 50upx;padding-top: 50upx;padding-bottom: 50upx;}
 
+/* padding X 轴方向 */
 .px-0 { padding-left: 0;padding-right: 0;}
 .px { padding-left: 5upx;padding-right: 5upx;}
 .px-1 { padding-left: 10upx;padding-right: 10upx;}
@@ -279,6 +281,7 @@ body{
 .px-4 { padding-left: 40upx;padding-right: 40upx;}
 .px-5 { padding-left: 50upx;padding-right: 50upx;}
 
+/* padding Y轴方向 */
 .py-0 { padding-top: 0;padding-bottom: 0;}
 .py { padding-top: 5upx;padding-bottom: 5upx;}
 .py-1 { padding-top: 10upx;padding-bottom: 10upx;}

@@ -19,7 +19,7 @@
 	/* 第三方动画库 */
 	@import "/common/animate.css";
 	/* 自定义图标库 */
-	@import "/common/icon.css";
+	@import "/common/iconfont.css";
 	/* UI基础库 */
 	@import "/common/zcm-main.css";
 	/* 公共样式 */
