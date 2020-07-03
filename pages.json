@@ -3,7 +3,38 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"app-plus": {
+					"titleNView": {
+						// "type":"transparent", //透明渐变导航栏 App-nvue 2.4.4+ 支持
+						"searchInput": {
+							"align":"left",
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "4px", //输入框圆角
+							"placeholder": "请输入搜索内容",
+							"placeholderColor":"#CCCCCC",  //占位符颜色
+							"disabled": true //disable时点击输入框不置焦，可以跳到新页面搜索
+						},
+						/* 搜索框两边按钮 */
+						"buttons": [
+							{
+								"color":"#989898", //默认颜色
+								"colorPressed":"#FD6801" ,//选中 按下去的颜色
+								"float":"left",
+								"fontSize":"22px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue608"
+							},
+							{
+								"color":"#989898", //默认颜色
+								"colorPressed":"#FD6801" ,//选中 按下去的颜色
+								"float":"right",
+								"fontSize":"22px",
+								"fontSrc":"/static/font/iconfont.ttf",
+								"text":"\ue661"
+							}
+						]
+					}
+				}
 			}
 		}
 	    ,{
@@ -24,7 +55,9 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "仿小米商城",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF"
+		"backgroundColor": "#FFFFFF",
+		"renderingMode": "seperated", // 仅微信小程序，webrtc 无法正常时尝试强制关闭同层渲染
+		"pageOrientation": "portrait"//横屏配置，全局屏幕旋转设置(仅 APP/微信/QQ小程序)，支持 auto  自动/ portrait  竖屏/ landscape 横屏
 	},
 	// 底部导航栏
 	"tabBar" : {

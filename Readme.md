@@ -19,7 +19,10 @@
 	font-family: "iconfont"  , sans-serif  !important;
 4、在pages.json中配置tabBar
 5、常用样式封装：1、颜色、背景颜色、边框颜色、文本颜色，2、布局，3、边框，4、内边距，5、外边距，6字体大小，7行高，8、flex布局 。 详情见zcm-main.css，commmon.css
-
+6、全局组件引用：需要到main.js中才能引入全局组件
+	import divider from "@/components/common/divider.vue"
+	//注册全局组件
+	Vue.component('divider',divider)
 
 
 

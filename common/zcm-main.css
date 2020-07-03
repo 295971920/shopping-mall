@@ -18,7 +18,11 @@ body{
 	--borderColor:#dee2e6;
 	--lightmuted:#B2B2B2;
 }
-
+/* 点击效果 */
+.btn__hover {
+	opacity: 0.9;
+	transform: scale(0.95, 0.95);
+}
 /* 阴影 */
 .shadow-sm {
     box-shadow: 0 2upx 4upx rgba(114, 130, 138, 0.2)!important;
@@ -51,6 +55,7 @@ body{
 .font-weight{ font-weight: bold!important; }
 .font-weight-100{ font-weight: 100!important; }
 
+/* 行高 */
 .line-h0{ line-height: 0!important; }
 .line-h{ line-height: 1!important; }
 .line-h-sm{ line-height: 1.2!important; }
@@ -127,7 +132,22 @@ body{
 .span24-24{ width: 100%; }
 
 
-/* flex布局 */
+/* 
+flex布局
+flex-direction:属性决定主轴的方向（即项目的排列方向）。
+flex-wrap:默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+flex-flow:属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+justify-content:属性定义了项目在主轴上的对齐方式。
+align-items:属性定义项目在交叉轴上如何对齐。
+align-content:属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+
+display:
+none 	此元素不会被显示。
+block 	此元素将显示为块级元素，此元素前后会带有换行符。
+inline 	默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block 	行内块元素。（CSS2.1 新增的值）
+更多参考：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+ */
 .d-flex{ display: flex; }
 .d-block{ display: block; }
 .d-inline-block{ display: inline-block; }
@@ -204,6 +224,8 @@ body{
 .bg-light-secondary{background-color: #F1F1F1!important;}
 
 /* Spacing */
+
+/* 外边距 */
 .m-0 { margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 0;}
 .m { margin-left: 5upx;margin-right: 5upx;margin-top: 5upx;margin-bottom: 5upx;}
 .m-1 { margin-left: 10upx;margin-right: 10upx;margin-top: 10upx;margin-bottom: 10upx;}
@@ -321,3 +343,4 @@ body{
 .pr-3 { padding-right: 30upx;}
 .pr-4 { padding-right: 40upx;}
 .pr-5 { padding-right: 50upx;}
+
