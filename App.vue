@@ -1,7 +1,18 @@
 <script>
 	export default {
+		// 全局变量
+		globalData:{
+			text:""
+		},
 		onLaunch: function() {
 			console.log('App Launch')
+			uni.$on('Message', function(e){
+				console.log(e)
+				// // 通知分类页修改数据
+				if(e.from && e.from == "index"){
+					uni.$emit('index',e)
+				 }
+			})
 		},
 		onShow: function() {
 			console.log('App Show')

@@ -8,8 +8,7 @@
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
-        "nvueCompiler" : "uni-app",
-        "compilerVersion" : 3,
+        "nvueCompiler" : "weex",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -72,7 +71,7 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     }
 }

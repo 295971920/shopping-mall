@@ -1,0 +1,155 @@
+<template>
+	<div>
+		<list>
+			<refresh style="height: 80px;"
+			@refresh="refresh" @pullingdown="pullingdown" :display="show">
+				<text>{{refreshText}}</text>
+			</refresh>
+			<cell>
+				<div style="height: 300px; border-width: 2px; border-style: solid;
+				border-color: #007AFF;background:#4CD964; margin: 50px;"
+				@click="openCeShi">
+					<text style="font-size: 50px;">{{ceshiText}}</text>
+				</div>
+			</cell>
+			<header>
+				<div style="height: 150px; background-color: #333333;"></div>
+			</header>
+		    <cell v-for="(num, index) in lists" :key="index">
+				<div style="height: 300px; border-width: 2px; border-style: solid; 
+				border-color: #007AFF;background:#4CD964; margin: 20px;"
+				@click="postMessage(num)">
+					<text>{{num}}</text>
+				</div>
+		    </cell>
+			
+			<!-- 使用loading解决直接在list中添加@loadmore下拉刷新几次后再上拉加载出现不触发问题 -->
+			<loading @loading="onLoading" :display="loadingShow">
+				<text style="display: flex; justify-content: center; width: 720px;" >
+					Loading....
+				</text>
+			</loading>
+		  </list>
+	</div>
+</template>
+
+<script>
+export default {
+	data () {
+		  return {
+			ceshiText: "index",
+			loadingShow: "hide",
+			show: 'hide',
+			refreshText: '↓ 下拉可以刷新...',
+			lists: ['A', 'B', 'C', 'D', 'E'],
+		}
+	},
+	created() {
+		// const globalEvent = weex.requireModule('globalEvent');
+		// globalEvent.addEventListener('plusMessage',e =>{
+		// 	this.ceshiText = e.data.res;
+		// })
+		// getApp().globalData.text = '嘻嘻嘻嘻'
+		uni.$on("plusMessage", e => {
+			this.ceshiText = e.res
+		})
+		// 存储
+		uni.setStorage({
+			key:"index",
+			data:"indexdata"
+		})
+	},
+	//v3编译可以不通过uni.即可直接使用onNavigationBarButtonTap获取导航栏
+	onNavigationBarButtonTap(e){
+		console.log(e)
+		if(e.float == "left"){
+			console.log("点击了左边")
+		}else{
+			console.log("点击了右边")
+		}
+	},
+	//监听点击导航栏input搜索框事件
+	onNavigationBarSearchInputClicked(e) {
+		console.log("点击了导航栏input搜索框")
+	},
+	methods: {
+		openCeShi() {
+			uni.navigateTo({
+				url: '../ceshi/ceshi',
+			});
+		},
+		//nvue与vue之间的通讯
+		postMessage(num) {
+			getApp().globalData.text = num
+			uni.$emit('Message', {
+				data: num,
+				from: "index"
+			})
+		},
+		//上拉加载事件
+		onLoading(){
+			this.loadingShow = 'show';
+			setTimeout( () => {
+				this.lists = [...this.lists,...['a','b','c']];
+				this.loadingShow ='hide';
+			},2000)
+		},
+		//执行刷新
+		refresh(e){
+			this.show = 'show';
+			this.refreshText= '正在刷新中...';
+			setTimeout(() => {
+				this.show ='hide';
+				this.refreshText='↓ 下拉可以刷新...';
+			},1200)
+		},
+		//判断下拉刷新状态
+		pullingdown(e){
+			if(e.pullingDistance > e.viewHeight){
+				this.refreshText=  '正在刷新中...';
+			}else{
+				this.refreshText = '↓ 下拉可以刷新...';
+			}
+		}
+	}
+}
+</script>
+<style>
+
+</style>
+
+<!-- Nvue:如果一个页面路由下同时有vue页面和nvue页面，即出现同名的vue和nvue文件。
+那么在App端，会仅使用nvue页面，同名的vue文件将不会被编译到App端。而在非App端，
+会优先使用vue页面。如果不同名，只有nvue页面，则在非app端，只有uni-app编译模式的nvue文件才会编译。 -->
+<!-- 组件使用注意事项：
+	1、文字写在text中
+	2、<list>的子组件只能包括以下四种组件或是fix定位组件
+		<cell>:用于定义列表中的子列表选项，类似于HTML中的ul之中的li. weex会对<cell>进行高效的内存回收以达到更好的性能
+		<header>: 当<header>到达屏幕顶部时，吸附在屏幕顶部
+		<refresh>:用于给列表添加下拉刷新的功能
+		<loading>:用法与特性和<refresh>类似，用于给列表添加上拉加载更多的功能
+	3、图片要给指定高度-->
+<!-- Nvue中css的注意事项
+	1、单位只支持px,不支持em,rem,pt,%,upx
+	2、宽度问题，高度问题 宽：750px=100% 高：1250px = 100%
+	3、默认flex布局
+	4、CSS样式不能合着写：例如：border，margin属性合着写不生效
+	5、背景颜色只能用background-color
+	6、选择器只支持单类
+	7、引入要用<style src=""></style>
+	8、<div>组件默认是display:flex;flex-direction:cloumn;flex-wrap:nowrap;-->
+	
+<!-- nvue与vue之间的通信，建议使用uni.$on,uni.$emit -->
+<!-- // 接收信息的页面
+// $on(eventName, callback)  
+uni.$on('page-popup', (data) => {  
+    console.log('标题：' + data.title)
+    console.log('内容：' + data.content)
+})  
+
+// 发送信息的页面
+// $emit(eventName, data)  
+uni.$emit('page-popup', {  
+    title: '我是title',  
+    content: '我是content'  
+}); -->
